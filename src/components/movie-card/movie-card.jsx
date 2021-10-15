@@ -1,5 +1,8 @@
 import React from 'react';
 import propTypes, { func } from 'prop-types';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 
 export class MovieCard extends React.Component {
     render() {
