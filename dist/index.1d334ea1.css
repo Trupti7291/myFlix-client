@@ -1,0 +1,25 @@
+.app-container {
+  display: grid;
+  justify-content: center;
+}
+
+form {
+  margin-top: 50%;
+}
+
+.form-label {
+  margin-top: 5px;
+  height: 5px;
+}
+
+.form-control {
+  width: 500px !important;
+}
+
+.btn {
+  margin-left: 40%;
+}
+.my-flix {
+  color: steelblue;
+}
+/*# sourceMappingURL=index.1d334ea1.css.map */
