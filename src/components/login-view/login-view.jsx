@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Form, Button } from 'react-bootstrap';
+import { Navbar, Container, Row, Col } from "react-bootstrap";
+import './login-view.scss';
 
 export function LoginView(props) {
     const [username, setUsername] = useState("");
@@ -18,19 +20,26 @@ export function LoginView(props) {
             console.log('User not found');
         });
     };
-    return (
-        <Form>
-            <Form.Group controlId="formUsername">
-                <Form.Label>Username: </Form.Label>
-                <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
-            </Form.Group>
-            <Form.Group controlId="formPassword">
-                <Form.Label>Password: </Form.Label>
-                <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
-            </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleSubmit}>
-                Submit
-            </Button>
-        </Form>
+    return (<Container>
+        <Row className="main-view justify-content-md-center">
+            <Col md={8}>
+                <Navbar bg="dodgerblue">
+                    <Form>
+                        <Form.Group controlId="formUsername">
+                            <Form.Label>Username: </Form.Label>
+                            <Form.Control type="text" onChange={e => setUsername(e.target.value)} required placeholder="Enter Username" />
+                        </Form.Group>
+                        <Form.Group controlId="formPassword">
+                            <Form.Label>Password: </Form.Label>
+                            <Form.Control type="password" onChange={e => setPassword(e.target.value)} required placeholder="Enter Password" />
+                        </Form.Group>
+                        <Button variant="primary" type="submit" onClick={handleSubmit}>
+                            Submit
+                        </Button>
+                    </Form>
+                </Navbar>
+            </Col>
+        </Row>
+    </Container>
     );
 }
