@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Card, CardGroup, Containe, Row, Col } from "react-bootstrap";
+import { Form, Button, Card, CardGroup, Containe, Row, Col, Navbar } from "react-bootstrap";
 
 export function RegistrationView(props) {
     const [username, setUsername] = useState("");
@@ -14,37 +14,33 @@ export function RegistrationView(props) {
     };
 
     return (
-        <Containe>
-            <Row>
-                <Col>
-                    <CardGroup>
-                        <Card>
-                            <Card.Body>
-                                <Card.Title> Sign Up </Card.Title>
-                                <Form>
-                                    <Form.Group controlId="formUsername">
-                                        <Form.Label>Username: </Form.Label>
-                                        <Form.Control type="text" onChange={e => setUsername(e.target.value)} required placeholder="Enter Username" />
-                                    </Form.Group>
-                                    <Form.Group controlId="formPassword">
-                                        <Form.Label>Password: </Form.Label>
-                                        <Form.Control type="password" onChange={e => setPassword(e.target.value)} minLength="6" placeholder="Your password must contain min 8 characters" />
-                                    </Form.Group>
-                                    <Form.Group controlId="formEmail">
-                                        <Form.Label>Email: </Form.Label>
-                                        <Form.Control type="email" onChange={e => setEmail(e.target.value)} required placeholder="Enter your Email address" />
-                                    </Form.Group>
-                                    <Form.Group controlId="formBirthdate">
-                                        <Form.Label>Birthdate: </Form.Label>
-                                        <Form.Control type="date" onChange={e => setBirthdate(e.target.value)} required placeholder="YYYY/MM/DD" />
-                                    </Form.Group>
-                                    <Button variant="primary" type="submit" onClick={handleSubmit}> Sign up </Button>
-                                </Form>
-                            </Card.Body>
-                        </Card>
-                    </CardGroup>
-                </Col>
-            </Row>
-        </Containe >
+        <Navbar>
+            <Containe>
+                <Row>
+                    <Col>
+                        <Card.Title> Sign Up </Card.Title>
+                        <Form>
+                            <Form.Group controlId="formUsername">
+                                <Form.Label>Username: </Form.Label>
+                                <Form.Control type="text" onChange={e => setUsername(e.target.value)} required placeholder="Enter Username" />
+                            </Form.Group>
+                            <Form.Group controlId="formPassword">
+                                <Form.Label>Password: </Form.Label>
+                                <Form.Control type="password" onChange={e => setPassword(e.target.value)} minLength="6" placeholder="Your password must contain min 8 characters" />
+                            </Form.Group>
+                            <Form.Group controlId="formEmail">
+                                <Form.Label>Email: </Form.Label>
+                                <Form.Control type="email" onChange={e => setEmail(e.target.value)} required placeholder="Enter your Email address" />
+                            </Form.Group>
+                            <Form.Group controlId="formBirthdate">
+                                <Form.Label>Birthdate: </Form.Label>
+                                <Form.Control type="date" onChange={e => setBirthdate(e.target.value)} required placeholder="YYYY/MM/DD" />
+                            </Form.Group>
+                            <Button variant="primary" type="submit" onClick={handleSubmit}> Sign up </Button>
+                        </Form>
+                    </Col>
+                </Row>
+            </Containe >
+        </Navbar>
     );
 }
