@@ -17,18 +17,6 @@ export class MainView extends React.Component {
         };
     }
 
-    /* componentDidMount() {
-        axios.get('https://my-flixapp.herokuapp.com/movies')
-            .then(response => {
-                this.setState({
-                    movies: response.data
-                });
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    } */
-
     componentDidMount() {
         let accessToken = localStorage.getItem('token');
         if (accessToken !== null) {
@@ -47,7 +35,6 @@ export class MainView extends React.Component {
     }
 
     onRegistration(register) {
-        console.log(user);
         this.setState({
             register
         });
@@ -83,8 +70,8 @@ export class MainView extends React.Component {
         const { movies, selectedMovie, user, register } = this.state;
 
         /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
+        if (!register) return (<RegistrationView onRegistration={(register) => this.onRegistration(register)} />);
         if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-        if (!register) return <RegistrationView onRegistration={register => this.onRegistration(register)} />
 
         if (movies.length === 0) return <div className="main-view" />;
 
