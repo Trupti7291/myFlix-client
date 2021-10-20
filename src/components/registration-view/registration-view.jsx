@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Card, CardGroup, Containe, Row, Col, Navbar } from "react-bootstrap";
+import { Form, Button, Container, Row, Col, Navbar } from "react-bootstrap";
 
 export function RegistrationView(props) {
     const [username, setUsername] = useState("");
@@ -14,11 +14,10 @@ export function RegistrationView(props) {
     };
 
     return (
-        <Navbar>
-            <Containe>
-                <Row>
-                    <Col>
-                        <Card.Title> Sign Up </Card.Title>
+        <Container>
+            <Row className="main-view justify-content-md-center">
+                <Col md={8}>
+                    <Navbar bg="dodgerblue">
                         <Form>
                             <Form.Group controlId="formUsername">
                                 <Form.Label>Username: </Form.Label>
@@ -38,9 +37,9 @@ export function RegistrationView(props) {
                             </Form.Group>
                             <Button variant="primary" type="submit" onClick={handleSubmit}> Sign up </Button>
                         </Form>
-                    </Col>
-                </Row>
-            </Containe >
-        </Navbar>
+                    </Navbar>
+                </Col>
+            </Row>
+        </Container>
     );
 }
