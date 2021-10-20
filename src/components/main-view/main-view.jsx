@@ -1,9 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
+
 import { Container, Row, Col } from 'react-bootstrap';
 
 export class MainView extends React.Component {
@@ -15,6 +18,21 @@ export class MainView extends React.Component {
             selectedMovie: null,
             user: null
         };
+    }
+
+    getMovies(token) {
+        axios.get('https://my-flixapp.herokuapp.com/movies', {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+            .then(response => {
+                // Assign the result to the state
+                this.setState({
+                    movies: response.data
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     componentDidMount() {
@@ -51,26 +69,11 @@ export class MainView extends React.Component {
         this.getMovies(authData.token);
     }
 
-    getMovies(token) {
-        axios.get('https://my-flixapp.herokuapp.com/movies', {
-            headers: { Authorization: `Bearer ${token}` }
-        })
-            .then(response => {
-                // Assign the result to the state
-                this.setState({
-                    movies: response.data
-                });
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
-
     render() {
         const { movies, selectedMovie, user, register } = this.state;
 
         /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-        // if (!register) return (<RegistrationView onRegistration={(register) => this.onRegistration(register)} />);
+        if (!register) return (<RegistrationView onRegistration={(register) => this.onRegistration(register)} />);
         if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
 
         if (movies.length === 0) return <div className="main-view" />;
