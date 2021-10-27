@@ -22,7 +22,7 @@ function UpdateUser({ handleSubmit, handleUpdate }) {
                         defaultValue={user.Password}
                         onChange={e => handleUpdate(e)}
                         required
-                        minLength="8"
+                        minLength="6"
                         placeholder="Your password must be 8 or more character"
                     />
                 </Form.Group>
