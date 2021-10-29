@@ -15,6 +15,7 @@ function FavouriteMovies({ favoriteMovieList }) {
             headers: { Authorization: `Bearer ${token}` },
         })
     }
+
     return (
         <Container>
             <Card>
