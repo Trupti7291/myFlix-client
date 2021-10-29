@@ -47,19 +47,27 @@ export class MainView extends React.Component {
     getMovies(token) {
         axios.get('https://my-flixapp.herokuapp.com/movies', {
             headers: { Authorization: `Bearer ${token}` }
+        }).then(response => {
+            // Assign the result to the state
+            this.setState({
+                movies: response.data
+            });
         })
-            // axios.get(`${config.API_ADDRESS}/movies`, {
-            //     headers: { Authorization: `Bearer ${token}` },
-            // })
-            .then(response => {
-                // Assign the result to the state
-                this.setState({
-                    movies: response.data
-                });
-            })
             .catch(function (error) {
                 console.log(error);
             });
+    }
+
+    getUsers(token) {
+        axios.get('https://my-flixapp.herokuapp.com/users', {
+            headers: { Authorization: `Bearer ${token}` }
+        }).then(response => {
+            this.setState({
+                users: response.data
+            });
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 
     onLoggedOut() {
@@ -75,6 +83,8 @@ export class MainView extends React.Component {
 
         return (
             <Container>
+                <button onClick={() => { this.onprofileview() }}>Profile</button>
+                <button onClick={() => { this.onLoggedOut() }}>Logout</button>
                 <Router>
                     <div className="main-view">
                         <Row className="main-view justify-content-md-center">
@@ -119,6 +129,7 @@ export class MainView extends React.Component {
                                 if (movies.length === 0) return <div className="main-view" />;
                                 return <ProfileView history={history} movies={movies} />
                             }} />
+
                         </Row>
                     </div>
                 </Router>
