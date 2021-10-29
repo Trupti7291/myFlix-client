@@ -11,7 +11,6 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
     const [user, setUser] = useState("");
     const getUser = () => { };
     const handleSubmit = (e) => { };
-
     const removeFav = (id) => { };
     const handleUpdate = (e) => { };
     useEffect(() => { }, []);
