@@ -12,6 +12,21 @@ export class MovieView extends React.Component {
         document.addEventListener('keypress', this.keypressCallback);
     }
 
+    addFavoriteMovie(_id) {
+        const token = localStorage.getItem("token");
+        const username = localStorage.getItem("username");
+
+        axios.post(`https://my-flixapp.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, {}, {
+            headers: { Authorization: `Bearer ${token}` },
+            method: "POST",
+        }).then((response) => {
+            alert(`Added to Favorites`);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
+
     componentWillUnmount() {
         document.removeEventListener('keypress', this.keypressCallback);
     }
@@ -44,8 +59,10 @@ export class MovieView extends React.Component {
                     </Link>
                     <span className="value"> {movie.Director.Name} </span>
                 </div>
+                <Button value={movie._id} onClick={(e) => this.addFavoriteMovie(e, movie)}> Add to Favorites </Button>
                 <button onClick={() => { onBackClick(null); }}>Back</button>
             </div>
+
         );
     }
 }
