@@ -39738,7 +39738,7 @@ class MovieCard extends _reactDefault.default.Component {
                                     lineNumber: 21
                                 },
                                 __self: this,
-                                children: "Open"
+                                children: " See more "
                             })
                         })
                     ]
@@ -40531,7 +40531,7 @@ function ProfileView({ movies , onUpdatedUserInfo  }) {
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_favouriteMoviesDefault.default, {
-                                        favoriteMovieList: favoriteMovieList,
+                                        favoriteMovieList: _favouriteMoviesDefault.default,
                                         __source: {
                                             fileName: "src/components/profile-view/profile-view.jsx",
                                             lineNumber: 33
