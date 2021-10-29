@@ -1,5 +1,8 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import './director-view.scss';
+
 
 export class DirectorView extends React.Component {
     render() {
@@ -19,8 +22,11 @@ export class DirectorView extends React.Component {
                 <div className="director-birthdate">
                     <span className="value">{movie.Director.Birthdate}</span>
                 </div>
+                <Link to={`/`}>
+                    <Button className='returnButton' variant='dark'>Return to Movie List</Button>
+                </Link>
 
-                <Button variant="primary" onClick={() => { onBackClick(null); }}>Back</Button>
+                {/* <Button variant="primary" onClick={() => { onBackClick(null); }}>Back</Button> */}
 
             </div>
         );
