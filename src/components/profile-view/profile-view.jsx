@@ -30,7 +30,7 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
                     <Col sm={12} sm={8}>
                         <Card>
                             <Card.Body>
-                                <FavouriteMovies favoriteMovieList={favoriteMovieList} />
+                                <FavouriteMovies favoriteMovieList={FavouriteMovies} />
                             </Card.Body>
                         </Card>
 
