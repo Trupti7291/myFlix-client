@@ -17,6 +17,9 @@ export class Genreview extends React.Component {
                 </div>
 
                 <Button variant="primary" onClick={() => { onBackClick(null); }}>Back</Button>
+                <Link to={`/`}>
+                    <Button className='returnButton' variant='dark'>Return to Movie List</Button>
+                </Link>
 
             </div>
         );
