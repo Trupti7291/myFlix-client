@@ -7,7 +7,7 @@ import FavouriteMovies from "./favourite-movies";
 import UpdateUser from "./update-user";
 import "./profile-view.scss";
 
-export function ProfileView({ movies, onUpdatedUserInfo }) {
+function ProfileView({ UserInfo, FavouriteMovies, UpdateUser }) {
     const [user, setUser] = useState("");
     const getUser = () => { };
     const handleSubmit = (e) => { };
@@ -40,3 +40,5 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
         </Container>
     );
 }
+
+export default ProfileView
