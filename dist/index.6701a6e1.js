@@ -40319,33 +40319,70 @@ var _s = $RefreshSig$();
 function ProfileView({ UserInfo , FavouriteMovies , UpdateUser  }) {
     _s();
     const [user, setUser] = _react.useState("");
-    const getUser = ()=>{
+    const getUser = (token)=>{
+        _axiosDefault.default.get('https://my-flixapp.herokuapp.com/users', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            this.setState({
+                users: response.data
+            });
+        }).catch(function(error) {
+            console.log(error);
+        });
     };
     const handleSubmit = (e)=>{
     };
     const removeFav = (id)=>{
+        _axiosDefault.default.delete(`https://my-flixapp.herokuapp.com/users/${username}/FavoriteMovies/${id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        }).then(()=>{
+            this.componentDidMount();
+        }).catch((error)=>{
+            console.log(error);
+        });
     };
     const handleUpdate = (e)=>{
+        const { username , password , email , birthday  } = this.state;
+        _axiosDefault.default.put(`https://my-flixapp.herokuapp.com/users/${localStorage.getItem("username")}`, {
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: birthday
+        }, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        }).then(()=>{
+            const { reloadScreen  } = this.props;
+            localStorage.setItem("username", username);
+            reloadScreen();
+        }).catch((error)=>{
+            console.log(error);
+        });
     };
     _react.useEffect(()=>{
     }, []);
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 19
+            lineNumber: 61
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 20
+                lineNumber: 62
             },
             __self: this,
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Row, {
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 21
+                        lineNumber: 63
                     },
                     __self: this,
                     children: [
@@ -40354,19 +40391,19 @@ function ProfileView({ UserInfo , FavouriteMovies , UpdateUser  }) {
                             sm: 4,
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 22
+                                lineNumber: 64
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
                                 __source: {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 23
+                                    lineNumber: 65
                                 },
                                 __self: this,
                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Body, {
                                     __source: {
                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 24
+                                        lineNumber: 66
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(UserInfo, {
@@ -40374,7 +40411,7 @@ function ProfileView({ UserInfo , FavouriteMovies , UpdateUser  }) {
                                         email: user.Email,
                                         __source: {
                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                            lineNumber: 25
+                                            lineNumber: 67
                                         },
                                         __self: this
                                     })
@@ -40386,26 +40423,26 @@ function ProfileView({ UserInfo , FavouriteMovies , UpdateUser  }) {
                             sm: 8,
                             __source: {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 29
+                                lineNumber: 71
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
                                 __source: {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 30
+                                    lineNumber: 72
                                 },
                                 __self: this,
                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Body, {
                                     __source: {
                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 31
+                                        lineNumber: 73
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(FavouriteMovies, {
                                         favoriteMovieList: FavouriteMovies,
                                         __source: {
                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                            lineNumber: 32
+                                            lineNumber: 74
                                         },
                                         __self: this
                                     })
@@ -40419,7 +40456,7 @@ function ProfileView({ UserInfo , FavouriteMovies , UpdateUser  }) {
                     handleUpdate: handleUpdate,
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 38
+                        lineNumber: 80
                     },
                     __self: this
                 })
