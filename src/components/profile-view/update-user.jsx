@@ -2,23 +2,6 @@ import React from "react";
 import { Form } from "react-bootstrap";
 
 function UpdateUser({ handleSubmit, handleUpdate }) {
-    const { username, password, email, birthday } = this.state;
-    axios.put(`https://my-flixapp.herokuapp.com/users/${localStorage.getItem("username")}`,
-        {
-            Username: username,
-            Password: password,
-            Email: email,
-            Birthday: birthday,
-        },
-        {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }).then(() => {
-            const { reloadScreen } = this.props;
-            localStorage.setItem("username", username);
-            reloadScreen();
-        }).catch((error) => {
-            console.log(error);
-        });
     return (
         <> <h2> Update Info </h2>
             <Form>
