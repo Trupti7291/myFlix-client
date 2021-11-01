@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Button, Card, Container, Row, Col } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
 import axios from "axios";
-import userInfo from "./user-info";
-import favoriteMovie from "./favorite-movie";
+import UserInfo from "./user-info";
+import FavoriteMovies from "./favorite-movie";
 import UpdateUser from "./update-user";
 
 export function ProfileView({ movies, onUpdatedUserInfo }) {
-    const [user, setUser] = useState({})
-    const favoriteMovieList = movies.filter((movies) => { });
-    const getUser = () => {
+    const [user, setUser] = useState({
+        Username: " ",
+        Email: " ",
+        FavoriteMovies: []
+    })
+    const favoriteMovieList = movies.filter((movies) => {
+        return user.FavoriteMovies.includes(movies._id);
+    });
+    const getUser = (token) => {
         axios.get('https://my-flixapp.herokuapp.com/users', {
             headers: { Authorization: `Bearer ${token}` }
         }).then(response => {
@@ -110,18 +116,35 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
     }
 
     useEffect(() => {
-        setUsername(props.username);
-        setPassword(props.password);
-        setEmail(props.email);
-        setBirthday(props.birthday);
-    }, [props.username]);
+        let isMounted = true;
+        isMounted && getUser();
+        return () => {
+            isMounted = false;
+        }
+    }, []);
 
     return (
-        <div>
-            <userInfo name={user.Username} email={user.Email} />
+        <Container>
+            <Row>
+                <Col xs={12} sm={4}>
+                    <Card>
+                        <Card.Body>
+                            <UserInfo name={user.Username} email={user.Email} />
+                        </Card.Body>
+                    </Card>
 
+                </Col>
+                <Col xs={12} sm={4}>
+                    <Card>
+                        <Card.Body>
+                            <UpdateUser user={user} setUser={setUser} />
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+            <FavoriteMovies favoriteMovieList={favoriteMovieList} />
             <Button size="md" variant="outline-danger" type="submit" ml="4" onClick={() => this.deleteUser()} >Delete Account</Button>
-        </div>
-    )
+        </Container>
+    );
 
 }
