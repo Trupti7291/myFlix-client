@@ -1,25 +1,22 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 export class Genreview extends React.Component {
     render() {
-        const { movie, onBackClick } = this.props;
+        const { genre, movie, onBackClick } = this.props;
 
         return (
-            <div className="genre-view">
+            <div className="director-view">
+                <Card>
+                    <Card.Body>
 
-                <div className="genre-name">
-                    <span className="value">{movie.Genre.Name}</span>
-                </div>
-
-                <div className="director-discription">
-                    <span className="value">{movie.Genre.Description}</span>
-                </div>
+                        <Card.Title className="genre-name">{genre.Name}</Card.Title>
+                        <Card.Text> {genre.Description} </Card.Text>
+                        <button onClick={() => { onBackClick(null); }}> Back </button>
+                    </Card.Body>
+                </Card>
 
                 {/* <Button variant="primary" onClick={() => { onBackClick(null); }}>Back</Button> */}
-                <Link to={`/`}>
-                    <Button className='returnButton' variant='dark'>Return to Movie List</Button>
-                </Link>
 
             </div>
         );
