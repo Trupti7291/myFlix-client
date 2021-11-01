@@ -83,8 +83,8 @@ export class MainView extends React.Component {
 
         return (
             <Container>
-                <button onClick={() => { this.getMovies() }}> Movies </button>
-                <button onClick={() => { this.getUsers() }}> Profile </button>
+                {/* <button onClick={() => { this.getMovies() }}> Movies </button>
+                <button onClick={() => { this.getUsers() }}> Profile </button> */}
                 <button onClick={() => { this.onLoggedOut() }}> Logout </button>
                 <Router>
                     <div className="main-view">
