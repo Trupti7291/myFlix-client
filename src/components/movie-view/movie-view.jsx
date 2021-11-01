@@ -1,16 +1,8 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export class MovieView extends React.Component {
-
-    keypressCallback(event) {
-        console.log(event.key);
-    }
-
-    componentDidMount() {
-        document.addEventListener('keypress', this.keypressCallback);
-    }
 
     addFavoriteMovie(_id) {
         const token = localStorage.getItem("token");
@@ -25,37 +17,33 @@ export class MovieView extends React.Component {
             console.log(error);
         });
     }
-
-
-    componentWillUnmount() {
-        document.removeEventListener('keypress', this.keypressCallback);
-    }
-
     render() {
         const { movie, onBackClick } = this.props;
 
         return (
             <div className="movie-view">
-                <div className="movie-poster">
-                    <img src={movie.ImagePath} crossOrigin="anonymous" />
-                </div>
-                <div className="movie-title">
-                    <span className="label">Title: </span>
-                    <span className="value">{movie.Title} </span>
-                </div>
-                <div className="movie-description">
-                    <span className="label">Description: </span>
-                    <span className="value">{movie.Description} </span>
-                </div>
-                <Link to={`/directors/${movie.Director.Name}`}>
-                    <Button variant="link">Director</Button>
-                </Link>
+                <Card>
+                    <Card.Body>
+                        <Card.Img src={movie.ImagePath} crossOrigin="anonymous" />
+                        <Card.Title className="movie-title"> {movie.Title} </Card.Title>
+                        <Card.Text> {movie.Description} </Card.Text>
+                        <div>
+                            <Link to={`/directors/${movie.Director.Name}`}>
+                                <Button variant="link">Director</Button>
+                            </Link>
 
-                <Link to={`/genres/${movie.Genre.Name}`}>
-                    <Button variant="link">Genre</Button>
-                </Link>
-                <Button value={movie._id} onClick={(e) => this.addFavoriteMovie(e, movie)}> Add to Favorites </Button>
-                <button onClick={() => { onBackClick(null); }}>Back</button>
+                            <Link to={`/genres/${movie.Genre.Name}`}>
+                                <Button variant="link">Genre</Button>
+                            </Link>
+                            <Button value={movie._id} onClick={(e) => this.addFavoriteMovie(e, movie)}> Add to Favorites </Button>
+                            {/* <button onClick={() => { onBackClick(null); }}>Back</button> */}
+                            <Button onClick={onBackClick} variant="secondary"> Back </Button>
+                        </div>
+                    </Card.Body>
+                </Card>
+
+
+
             </div>
 
         );
