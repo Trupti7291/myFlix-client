@@ -58,18 +58,6 @@ export class MainView extends React.Component {
             });
     }
 
-    getUsers(token) {
-        axios.get('https://my-flixapp.herokuapp.com/users', {
-            headers: { Authorization: `Bearer ${token}` }
-        }).then(response => {
-            this.setState({
-                users: response.data
-            });
-        }).catch(function (error) {
-            console.log(error);
-        });
-    }
-
     onLoggedOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
