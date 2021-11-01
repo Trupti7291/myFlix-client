@@ -22,9 +22,7 @@ export class DirectorView extends React.Component {
                 <div className="director-birthdate">
                     <span className="value">{movie.Director.Birthdate}</span>
                 </div>
-                <Link to={`/`}>
-                    <Button className='returnButton' variant='dark'>Return to Movie List</Button>
-                </Link>
+                <button onClick={() => { onBackClick(null); }}> Back </button>
 
                 {/* <Button variant="primary" onClick={() => { onBackClick(null); }}>Back</Button> */}
 
