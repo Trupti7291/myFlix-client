@@ -9,10 +9,52 @@ import "./profile-view.scss";
 
 function ProfileView({ UserInfo, FavouriteMovies, UpdateUser }) {
     const [user, setUser] = useState("");
-    const getUser = () => { };
+    const getUser = (token) => {
+        axios.get('https://my-flixapp.herokuapp.com/users', {
+            headers: { Authorization: `Bearer ${token}` }
+        }).then(response => {
+            this.setState({
+                users: response.data
+            });
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
     const handleSubmit = (e) => { };
-    const removeFav = (id) => { };
-    const handleUpdate = (e) => { };
+    const removeFav = (id) => {
+        axios.delete(`https://my-flixapp.herokuapp.com/users/${username}/FavoriteMovies/${id}`, {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        })
+            .then(() => {
+                this.componentDidMount();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+    const handleUpdate = (e) => {
+        const { username, password, email, birthday } = this.state;
+        axios.put(
+            `https://my-flixapp.herokuapp.com/users/${localStorage.getItem("username")}`,
+            {
+                Username: username,
+                Password: password,
+                Email: email,
+                Birthday: birthday,
+            },
+            {
+                headers: { Authorization: `Bearer ${localStorage.getItem("token")}`, },
+            }
+        )
+            .then(() => {
+                const { reloadScreen } = this.props;
+                localStorage.setItem("username", username);
+                reloadScreen();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     useEffect(() => { }, []);
 
     return (
