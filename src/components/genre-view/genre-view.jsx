@@ -16,7 +16,7 @@ export class Genreview extends React.Component {
                     <span className="value">{movie.Genre.Description}</span>
                 </div>
 
-                <Button variant="primary" onClick={() => { onBackClick(null); }}>Back</Button>
+                {/* <Button variant="primary" onClick={() => { onBackClick(null); }}>Back</Button> */}
                 <Link to={`/`}>
                     <Button className='returnButton' variant='dark'>Return to Movie List</Button>
                 </Link>
