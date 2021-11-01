@@ -22825,6 +22825,28 @@ class MainView extends _reactDefault.default.Component {
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsx("button", {
                     onClick: ()=>{
+                        this.getMovies();
+                    },
+                    __source: {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 86
+                    },
+                    __self: this,
+                    children: " Movies "
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                    onClick: ()=>{
+                        this.getUsers();
+                    },
+                    __source: {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 87
+                    },
+                    __self: this,
+                    children: " Profile "
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                    onClick: ()=>{
                         this.onLoggedOut();
                     },
                     __source: {
@@ -39864,85 +39886,39 @@ class MovieView extends _reactDefault.default.Component {
                         })
                     ]
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
-                    className: "movie-genre",
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                    to: `/directors/${movie.Director.Name}`,
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 50
                     },
                     __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                            to: `/genres/${movie.Genre.Name}`,
-                            __source: {
-                                fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 51
-                            },
-                            __self: this,
-                            children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                varient: "link",
-                                __source: {
-                                    fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 52
-                                },
-                                __self: this,
-                                children: " Genre "
-                            })
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsxs("span", {
-                            className: "value",
-                            __source: {
-                                fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 54
-                            },
-                            __self: this,
-                            children: [
-                                " ",
-                                movie.Genre.Name,
-                                " "
-                            ]
-                        })
-                    ]
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                        variant: "link",
+                        __source: {
+                            fileName: "src/components/movie-view/movie-view.jsx",
+                            lineNumber: 51
+                        },
+                        __self: this,
+                        children: "Director"
+                    })
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
-                    className: "movie-director",
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                    to: `/genres/${movie.Genre.Name}`,
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 56
+                        lineNumber: 54
                     },
                     __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                            to: `/directors/${movie.Director.Name}`,
-                            __source: {
-                                fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 57
-                            },
-                            __self: this,
-                            children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                varient: "link",
-                                __source: {
-                                    fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 58
-                                },
-                                __self: this,
-                                children: " Director "
-                            })
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsxs("span", {
-                            className: "value",
-                            __source: {
-                                fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 60
-                            },
-                            __self: this,
-                            children: [
-                                " ",
-                                movie.Director.Name,
-                                " "
-                            ]
-                        })
-                    ]
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                        variant: "link",
+                        __source: {
+                            fileName: "src/components/movie-view/movie-view.jsx",
+                            lineNumber: 55
+                        },
+                        __self: this,
+                        children: "Genre"
+                    })
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                     value: movie._id,
@@ -39950,7 +39926,7 @@ class MovieView extends _reactDefault.default.Component {
                     ,
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 62
+                        lineNumber: 57
                     },
                     __self: this,
                     children: " Add to Favorites "
@@ -39961,7 +39937,7 @@ class MovieView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 63
+                        lineNumber: 58
                     },
                     __self: this,
                     children: "Back"
@@ -40055,23 +40031,16 @@ class DirectorView extends _reactDefault.default.Component {
                         children: movie.Director.Birthdate
                     })
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                    to: `/`,
+                /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                    onClick: ()=>{
+                        onBackClick(null);
+                    },
                     __source: {
                         fileName: "src/components/director-view/director-view.jsx",
                         lineNumber: 25
                     },
                     __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                        className: "returnButton",
-                        variant: "dark",
-                        __source: {
-                            fileName: "src/components/director-view/director-view.jsx",
-                            lineNumber: 26
-                        },
-                        __self: this,
-                        children: "Return to Movie List"
-                    })
+                    children: " Back "
                 })
             ]
         }));
@@ -40142,18 +40111,6 @@ class Genreview extends _reactDefault.default.Component {
                         __self: this,
                         children: movie.Genre.Description
                     })
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                    variant: "primary",
-                    onClick: ()=>{
-                        onBackClick(null);
-                    },
-                    __source: {
-                        fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 19
-                    },
-                    __self: this,
-                    children: "Back"
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx(Link, {
                     to: `/`,
