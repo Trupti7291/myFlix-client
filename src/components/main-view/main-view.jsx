@@ -9,6 +9,7 @@ import { DirectorView } from '../director-view/director-view';
 import { Genreview } from '../genre-view/genre-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { ProfileView } from '../profile-view/profile-view';
+import { NavigationBar } from '../navigation-bar/navigation-bar';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -71,10 +72,13 @@ export class MainView extends React.Component {
 
         return (
             <Container>
+                const {user, navigation} = this.state;
+
                 {/* <button onClick={() => { this.getMovies() }}> Movies </button>
-                <button onClick={() => { this.getUsers() }}> Profile </button> */}
-                <button onClick={() => { this.onLoggedOut() }}> Logout </button>
+                <button onClick={() => { this.getUsers() }}> Profile </button>
+                <button onClick={() => { this.onLoggedOut() }}> Logout </button> */}
                 <Router>
+                    <NavigationBar navigation={navigation} />
                     <div className="main-view">
                         <Row className="main-view justify-content-md-center">
                             <Route exact path="/" render={() => {
