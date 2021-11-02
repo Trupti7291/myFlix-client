@@ -59,6 +59,18 @@ export class MainView extends React.Component {
             });
     }
 
+    getUsers(token) {
+        axios.get('https://my-flixapp.herokuapp.com/users', {
+            headers: { Authorization: `Bearer ${token}` }
+        }).then(response => {
+            this.setState({
+                users: response.data
+            });
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
     onLoggedOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -68,17 +80,13 @@ export class MainView extends React.Component {
     }
 
     render() {
-        const { movies, user } = this.state;
+        const { movies } = this.props;
+        const { user, navbar } = this.state;
 
         return (
             <Container>
-                const {user, navigation} = this.state;
-
-                {/* <button onClick={() => { this.getMovies() }}> Movies </button>
-                <button onClick={() => { this.getUsers() }}> Profile </button>
-                <button onClick={() => { this.onLoggedOut() }}> Logout </button> */}
                 <Router>
-                    <NavigationBar navigation={navigation} />
+                    <NavigationBar navbar={navbar} />
                     <div className="main-view">
                         <Row className="main-view justify-content-md-center">
                             <Route exact path="/" render={() => {
