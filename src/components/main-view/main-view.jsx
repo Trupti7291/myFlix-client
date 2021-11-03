@@ -12,6 +12,7 @@ import { ProfileView } from '../profile-view/profile-view';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
 
 import { Container, Row, Col } from 'react-bootstrap';
+import "./main-view.scss";
 
 export class MainView extends React.Component {
 
@@ -80,13 +81,12 @@ export class MainView extends React.Component {
     }
 
     render() {
-        const { movies } = this.props;
-        const { user, navbar } = this.state;
+        const { movies, user } = this.state;
 
         return (
             <Container>
                 <Router>
-                    <NavigationBar navbar={navbar} />
+                    <NavigationBar />
                     <div className="main-view">
                         <Row className="main-view justify-content-md-center">
                             <Route exact path="/" render={() => {
@@ -130,7 +130,6 @@ export class MainView extends React.Component {
                                 if (movies.length === 0) return <div className="main-view" />;
                                 return <ProfileView history={history} movies={movies} />
                             }} />
-
                         </Row>
                     </div>
                 </Router>
