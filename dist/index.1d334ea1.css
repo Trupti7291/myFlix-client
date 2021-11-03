@@ -28,7 +28,13 @@ img {
   height: 300px;
 }
 
+.color-nav {
+  background-color: blue;
+}
 
+.btn {
+  color: blanchedalmond;
+}
 .main-view {
   margin-top: 90px;
 }
