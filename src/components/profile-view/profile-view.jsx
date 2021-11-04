@@ -73,27 +73,25 @@ export class ProfileView extends React.Component {
 
         const token = localStorage.getItem("token");
 
-        axios.put(`https://my-flixapp.herokuapp.com/users/${username}`, {
-            headers: { Authorization: `Bearer ${token}` },
-            data: {
-                Username: newUsername ? newUsername : this.state.Username,
-                Password: newPassword ? newPassword : this.state.Password,
-                Email: newEmail ? newEmail : this.state.Email,
-                Birthdate: newBirthdate ? newBirthdate : this.state.Birthdate,
-            },
-        }).then((response) => {
-            alert("Saved Changes");
-            this.setState({
-                Username: response.data.Username,
-                Password: response.data.Password,
-                Email: response.data.Email,
-                Birthdate: response.data.Birthdate,
+        axios
+            .put(`https://my-flixapp.herokuapp.com/users/${username}`,
+                {
+                    Username: this.state.username,
+                    Password: this.state.password,
+                    Email: this.state.email,
+                    Birthdate: this.state.birthday,
+                }, {
+                headers: { Authorization: `Bearer ${token}` },
+            }
+            )
+            .then((response) => {
+                alert("Saved Changes");
+                localStorage.setItem("user", this.state.username);
+                window.open(`/users/${username}`, "_self");
+            })
+            .catch(function (error) {
+                console.log(error);
             });
-            localStorage.setItem("user", this.state.Username);
-            window.open(`/users/${username}`, "_self");
-        }).catch(function (error) {
-            console.log(error);
-        });
     }
     setUsername(input) {
         this.Username = input;
