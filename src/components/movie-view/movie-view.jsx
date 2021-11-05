@@ -41,11 +41,7 @@ export class MovieView extends React.Component {
                         </div>
                     </Card.Body>
                 </Card>
-
-
-
             </div>
-
         );
     }
 }
