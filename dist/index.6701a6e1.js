@@ -39746,13 +39746,15 @@ parcelHelpers.export(exports, "MovieView", ()=>MovieView
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 class MovieView extends _reactDefault.default.Component {
     addFavoriteMovie(_id) {
         const token = localStorage.getItem("token");
         const username = localStorage.getItem("username");
-        axios.post(`https://my-flixapp.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, {
+        _axiosDefault.default.post(`https://my-flixapp.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, {
         }, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -39770,19 +39772,19 @@ class MovieView extends _reactDefault.default.Component {
             className: "movie-view",
             __source: {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 24
+                lineNumber: 25
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
                 __source: {
                     fileName: "src/components/movie-view/movie-view.jsx",
-                    lineNumber: 25
+                    lineNumber: 26
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 26
+                        lineNumber: 27
                     },
                     __self: this,
                     children: [
@@ -39791,7 +39793,7 @@ class MovieView extends _reactDefault.default.Component {
                             crossOrigin: "anonymous",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 27
+                                lineNumber: 28
                             },
                             __self: this
                         }),
@@ -39799,7 +39801,7 @@ class MovieView extends _reactDefault.default.Component {
                             className: "movie-title",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 28
+                                lineNumber: 29
                             },
                             __self: this,
                             children: [
@@ -39811,7 +39813,7 @@ class MovieView extends _reactDefault.default.Component {
                         /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Text, {
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 29
+                                lineNumber: 30
                             },
                             __self: this,
                             children: [
@@ -39823,7 +39825,7 @@ class MovieView extends _reactDefault.default.Component {
                         /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 30
+                                lineNumber: 31
                             },
                             __self: this,
                             children: [
@@ -39831,14 +39833,14 @@ class MovieView extends _reactDefault.default.Component {
                                     to: `/directors/${movie.Director.Name}`,
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 31
+                                        lineNumber: 32
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                                         variant: "link",
                                         __source: {
                                             fileName: "src/components/movie-view/movie-view.jsx",
-                                            lineNumber: 32
+                                            lineNumber: 33
                                         },
                                         __self: this,
                                         children: "Director"
@@ -39848,14 +39850,14 @@ class MovieView extends _reactDefault.default.Component {
                                     to: `/genres/${movie.Genre.Name}`,
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 35
+                                        lineNumber: 36
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                                         variant: "link",
                                         __source: {
                                             fileName: "src/components/movie-view/movie-view.jsx",
-                                            lineNumber: 36
+                                            lineNumber: 37
                                         },
                                         __self: this,
                                         children: "Genre"
@@ -39867,7 +39869,7 @@ class MovieView extends _reactDefault.default.Component {
                                     ,
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 38
+                                        lineNumber: 39
                                     },
                                     __self: this,
                                     children: " Add to Favorites "
@@ -39877,7 +39879,7 @@ class MovieView extends _reactDefault.default.Component {
                                     variant: "secondary",
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 40
+                                        lineNumber: 41
                                     },
                                     __self: this,
                                     children: " Back "
@@ -39896,7 +39898,7 @@ class MovieView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"5lGN4","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lpaPZ"}],"ck15y":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"5lGN4","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lpaPZ","axios":"iYoWk"}],"ck15y":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$f8cc = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
