@@ -29,11 +29,11 @@ export class ProfileView extends React.Component {
             headers: { Authorization: `Bearer ${token}` },
         }).then((response) => {
             this.setState({
-                Username: response.data.Username,
-                Password: response.data.Password,
-                Email: response.data.Email,
-                Birthdate: response.data.Birthdate,
-                FavoriteMovies: response.data.FavoriteMovies,
+                Username: response.data.username,
+                Password: response.data.password,
+                Email: response.data.email,
+                Birthdate: response.data.birthdate,
+                FavoriteMovies: response.data.favoriteMovies,
             });
         }).catch(function (error) {
             console.log(error);
@@ -94,16 +94,16 @@ export class ProfileView extends React.Component {
             });
     }
     setUsername(input) {
-        this.Username = input;
+        this.username = input;
     }
     setPassword(input) {
-        this.Password = input;
+        this.password = input;
     }
     setEmail(input) {
-        this.Email = input;
+        this.email = input;
     }
     setBirthdate(input) {
-        this.Birthdate = input;
+        this.birthdate = input;
     }
     handleDeleteUser(e) {
         e.preventDefault();
