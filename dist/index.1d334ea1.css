@@ -8,16 +8,11 @@ form {
 }
 
 .form-label {
-  margin-top: 5px;
-  height: 5px;
-}
-
-.form-control {
-  width: 500px !important;
+  justify-content: center;
 }
 
 .btn {
-  margin-left: 40%;
+  margin-right: 100%;
 }
 * {
   margin-top: 5px;
