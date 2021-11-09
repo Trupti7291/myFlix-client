@@ -25,7 +25,7 @@ export class ProfileView extends React.Component {
 
     getUser(token) {
         const username = localStorage.getItem("user");
-        axios.get(`"https://my-flixapp.herokuapp.com/users/${username}`, {
+        axios.get(`https://my-flixapp.herokuapp.com/users/${username}`, {
             headers: { Authorization: `Bearer ${token}` },
         }).then((response) => {
             this.setState({
@@ -124,8 +124,8 @@ export class ProfileView extends React.Component {
     }
 
     render() {
-        const { favoriteMovies, validated } = this.state;
-        const { Username, Email } = this.setState;
+        const { favoriteMovies, validated, Username, Email } = this.state;
+        // const { Username, Email } = this.setState;
         const { movies } = this.props;
 
         return (
