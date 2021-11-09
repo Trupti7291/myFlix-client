@@ -22832,6 +22832,7 @@ class MainView extends _reactDefault.default.Component {
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx(_navigationBar.NavigationBar, {
+                        user: user,
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
                             lineNumber: 89
@@ -40327,7 +40328,7 @@ class ProfileView extends _reactDefault.default.Component {
     }
     getUser(token) {
         const username = localStorage.getItem("user");
-        _axiosDefault.default.get(`"https://my-flixapp.herokuapp.com/users/${username}`, {
+        _axiosDefault.default.get(`https://my-flixapp.herokuapp.com/users/${username}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -40419,8 +40420,8 @@ class ProfileView extends _reactDefault.default.Component {
         });
     }
     render() {
-        const { favoriteMovies , validated  } = this.state;
-        const { Username , Email  } = this.setState;
+        const { favoriteMovies , validated , Username , Email  } = this.state;
+        // const { Username, Email } = this.setState;
         const { movies  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
             __source: {
