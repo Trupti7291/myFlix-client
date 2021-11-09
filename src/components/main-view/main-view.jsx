@@ -86,7 +86,7 @@ export class MainView extends React.Component {
         return (
             <Container>
                 <Router>
-                    <NavigationBar />
+                    <NavigationBar user={user} />
                     <div className="main-view">
                         <Row className="main-view justify-content-md-center">
                             <Route exact path="/" render={() => {
