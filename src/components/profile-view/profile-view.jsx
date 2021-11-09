@@ -25,34 +25,42 @@ export class ProfileView extends React.Component {
 
     getUser(token) {
         const username = localStorage.getItem("user");
-        axios.get(`https://my-flixapp.herokuapp.com/users/${username}`, {
-            headers: { Authorization: `Bearer ${token}` },
-        }).then((response) => {
-            this.setState({
-                Username: response.data.username,
-                Password: response.data.password,
-                Email: response.data.email,
-                Birthdate: response.data.birthdate,
-                FavoriteMovies: response.data.favoriteMovies,
+        axios
+            .get(`https://my-flixapp.herokuapp.com/users/${username}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            .then((response) => {
+                this.setState({
+                    Username: response.data.Username,
+                    Password: response.data.Password,
+                    Email: response.data.Email,
+                    Birthdate: response.data.Birthdate,
+                    FavoriteMovies: response.data.FavoriteMovies,
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
             });
-        }).catch(function (error) {
-            console.log(error);
-        });
     }
 
     removeFavMovies() {
         const token = localStorage.getItem("token");
         const username = localStorage.getItem("user");
 
-        axios.delete(`https://my-flixapp.herokuapp.com/users/${username}/movies/${movie._id}`, {
-            headers: { Authorization: `Bearer ${token}` },
-        }
-        ).then(() => {
-            alert("Movie was removed");
-            this.componentDidMount();
-        }).catch(function (error) {
-            console.log(error);
-        });
+        axios
+            .delete(
+                `https://my-flixapp.herokuapp.com/users/${username}/movies/${movie._id}`,
+                {
+                    headers: { Authorization: `Bearer ${token}` },
+                }
+            )
+            .then(() => {
+                alert("Movie was removed");
+                this.componentDidMount();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     handleUpdate(e, username, password, email, birthday) {
@@ -74,15 +82,17 @@ export class ProfileView extends React.Component {
         const token = localStorage.getItem("token");
 
         axios
-            .put(`https://my-flixapp.herokuapp.com/users/${username}`,
+            .put(
+                `https://my-flixapp.herokuapp.com/users/${username}`,
                 {
                     Username: this.state.username,
                     Password: this.state.password,
                     Email: this.state.email,
                     Birthdate: this.state.birthday,
-                }, {
-                headers: { Authorization: `Bearer ${token}` },
-            }
+                },
+                {
+                    headers: { Authorization: `Bearer ${token}` },
+                }
             )
             .then((response) => {
                 alert("Saved Changes");
@@ -94,16 +104,16 @@ export class ProfileView extends React.Component {
             });
     }
     setUsername(input) {
-        this.username = input;
+        this.Username = input;
     }
     setPassword(input) {
-        this.password = input;
+        this.Password = input;
     }
     setEmail(input) {
-        this.email = input;
+        this.Email = input;
     }
     setBirthdate(input) {
-        this.birthdate = input;
+        this.Birthdate = input;
     }
     handleDeleteUser(e) {
         e.preventDefault();
@@ -111,22 +121,27 @@ export class ProfileView extends React.Component {
         const token = localStorage.getItem("token");
         const username = localStorage.getItem("user");
 
-        axios.delete(`https://my-flixapp.herokuapp.com/users/${username}`, {
-            headers: { Authorization: `Bearer ${token}` },
-        }).then(() => {
-            localStorage.removeItem("user");
-            localStorage.removeItem("token");
-            alert("Your account has been deleted.");
-            window.open(`/`, "_self");
-        }).catch((e) => {
-            console.log(e);
-        });
+        axios
+            .delete(`https://my-flixapp.herokuapp.com/users/${username}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            .then(() => {
+                localStorage.removeItem("user");
+                localStorage.removeItem("token");
+                alert("Your account has been deleted.");
+                window.open(`/`, "_self");
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     }
 
     render() {
         const { favoriteMovies, validated, Username, Email } = this.state;
         // const { Username, Email } = this.setState;
         const { movies } = this.props;
+
+        console.log("username", Username);
 
         return (
             <Container>
@@ -154,19 +169,27 @@ export class ProfileView extends React.Component {
                                                     <Card.Body>
                                                         <Card.Title> Update Info </Card.Title>
 
-                                                        <Form noValidate validated={validated} className="update-form"
-                                                            onSubmit={(e) => this.handleUpdate(
-                                                                e,
-                                                                this.Username,
-                                                                this.Password,
-                                                                this.Email,
-                                                                this.Birthdate
-                                                            )}>
+                                                        <Form
+                                                            noValidate
+                                                            validated={validated}
+                                                            className="update-form"
+                                                            onSubmit={(e) =>
+                                                                this.handleUpdate(
+                                                                    e,
+                                                                    this.Username,
+                                                                    this.Password,
+                                                                    this.Email,
+                                                                    this.Birthdate
+                                                                )
+                                                            }
+                                                        >
                                                             <Form.Group controlId="formUsername">
                                                                 <Form.Label>Username: </Form.Label>
                                                                 <Form.Control
                                                                     type="text"
-                                                                    onChange={(e) => this.setUsername(e.target.value)}
+                                                                    onChange={(e) =>
+                                                                        this.setUsername(e.target.value)
+                                                                    }
                                                                     placeholder="Update Username"
                                                                 />
                                                             </Form.Group>
@@ -175,7 +198,9 @@ export class ProfileView extends React.Component {
                                                                 <Form.Label>Password: </Form.Label>
                                                                 <Form.Control
                                                                     type="password"
-                                                                    onChange={(e) => this.setPassword(e.target.value)}
+                                                                    onChange={(e) =>
+                                                                        this.setPassword(e.target.value)
+                                                                    }
                                                                     required
                                                                     minLength="8"
                                                                     placeholder="Update your password"
@@ -186,7 +211,9 @@ export class ProfileView extends React.Component {
                                                                 <Form.Label>Email: </Form.Label>
                                                                 <Form.Control
                                                                     type="email"
-                                                                    onChange={(e) => this.setEmail(e.target.value)}
+                                                                    onChange={(e) =>
+                                                                        this.setEmail(e.target.value)
+                                                                    }
                                                                     required
                                                                     placeholder="Update your email"
                                                                 />
@@ -265,7 +292,10 @@ export class ProfileView extends React.Component {
                                 </Row>
                             </Card.Body>
 
-                            <Button variant="secondary" onClick={() => handleDeleteUser(e, user)} >
+                            <Button
+                                variant="secondary"
+                                onClick={() => handleDeleteUser(e, user)}
+                            >
                                 Delete Account
                             </Button>
                         </Col>
