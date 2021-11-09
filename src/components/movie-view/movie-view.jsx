@@ -1,26 +1,34 @@
-import React from 'react';
-import axios from 'axios';
-import { Button, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 export class MovieView extends React.Component {
-
-    addFavoriteMovie(_id) {
+    addFavoriteMovie(event, movie) {
         const token = localStorage.getItem("token");
-        const username = localStorage.getItem("username");
+        const username = localStorage.getItem("user");
+        console.log("username", username);
 
-        axios.post(`https://my-flixapp.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, {}, {
-            headers: { Authorization: `Bearer ${token}` },
-            method: "POST",
-        }).then((response) => {
-            alert(`Added to Favorites`);
-        }).catch(function (error) {
-            console.log(error);
-        });
+        axios
+            .post(
+                `https://my-flixapp.herokuapp.com/users/${username}/movies/${movie._id}`,
+                {},
+                {
+                    headers: { Authorization: `Bearer ${token}` },
+                    "Content-Type": "application/json",
+                }
+            )
+            .then((response) => {
+                console.log("response", response);
+                alert(`Added to Favorites`);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
     render() {
         const { movie, onBackClick } = this.props;
-
+        console.log("movie", movie);
         return (
             <div className="movie-view">
                 <Card>
@@ -36,9 +44,18 @@ export class MovieView extends React.Component {
                             <Link to={`/genres/${movie.Genre.Name}`}>
                                 <Button variant="link">Genre</Button>
                             </Link>
-                            <Button value={movie._id} onClick={(e) => this.addFavoriteMovie(e, movie)}> Add to Favorites </Button>
+                            <Button
+                                value={movie._id}
+                                onClick={(e) => this.addFavoriteMovie(e, movie)}
+                            >
+                                {" "}
+                                Add to Favorites{" "}
+                            </Button>
                             {/* <button onClick={() => { onBackClick(null); }}>Back</button> */}
-                            <Button onClick={onBackClick} variant="secondary"> Back </Button>
+                            <Button onClick={onBackClick} variant="secondary">
+                                {" "}
+                                Back{" "}
+                            </Button>
                         </div>
                     </Card.Body>
                 </Card>
