@@ -169,27 +169,18 @@ export class ProfileView extends React.Component {
                                                     <Card.Body>
                                                         <Card.Title> Update Info </Card.Title>
 
-                                                        <Form
-                                                            noValidate
-                                                            validated={validated}
-                                                            className="update-form"
-                                                            onSubmit={(e) =>
-                                                                this.handleUpdate(
-                                                                    e,
-                                                                    this.Username,
-                                                                    this.Password,
-                                                                    this.Email,
-                                                                    this.Birthdate
-                                                                )
-                                                            }
-                                                        >
+                                                        <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(
+                                                            e,
+                                                            this.Username,
+                                                            this.Password,
+                                                            this.Email,
+                                                            this.Birthdate
+                                                        )}>
                                                             <Form.Group controlId="formUsername">
                                                                 <Form.Label>Username: </Form.Label>
                                                                 <Form.Control
                                                                     type="text"
-                                                                    onChange={(e) =>
-                                                                        this.setUsername(e.target.value)
-                                                                    }
+                                                                    onChange={(e) => this.setUsername(e.target.value)}
                                                                     placeholder="Update Username"
                                                                 />
                                                             </Form.Group>
@@ -198,9 +189,7 @@ export class ProfileView extends React.Component {
                                                                 <Form.Label>Password: </Form.Label>
                                                                 <Form.Control
                                                                     type="password"
-                                                                    onChange={(e) =>
-                                                                        this.setPassword(e.target.value)
-                                                                    }
+                                                                    onChange={(e) => this.setPassword(e.target.value)}
                                                                     required
                                                                     minLength="8"
                                                                     placeholder="Update your password"
@@ -211,9 +200,7 @@ export class ProfileView extends React.Component {
                                                                 <Form.Label>Email: </Form.Label>
                                                                 <Form.Control
                                                                     type="email"
-                                                                    onChange={(e) =>
-                                                                        this.setEmail(e.target.value)
-                                                                    }
+                                                                    onChange={(e) => this.setEmail(e.target.value)}
                                                                     required
                                                                     placeholder="Update your email"
                                                                 />
@@ -251,10 +238,7 @@ export class ProfileView extends React.Component {
                                 <Row className="favorites-movies ">
                                     {favoriteMovies.length > 0 &&
                                         movies.map((movie) => {
-                                            if (
-                                                movie._id ===
-                                                favoriteMovies.find((fav) => fav === movie._id)
-                                            ) {
+                                            if (movie._id === favoriteMovies.find((fav) => fav === movie._id)) {
                                                 return (
                                                     <CardDeck className="movie-card-deck">
                                                         <Card
@@ -277,9 +261,7 @@ export class ProfileView extends React.Component {
                                                                     className="profile-button remove-favorite"
                                                                     variant="danger"
                                                                     value={movie._id}
-                                                                    onClick={(e) =>
-                                                                        this.removeFavMovies(e, movie)
-                                                                    }
+                                                                    onClick={(e) => this.removeFavMovies(e, movie)}
                                                                 >
                                                                     Remove
                                                                 </Button>
@@ -292,10 +274,7 @@ export class ProfileView extends React.Component {
                                 </Row>
                             </Card.Body>
 
-                            <Button
-                                variant="secondary"
-                                onClick={() => handleDeleteUser(e, user)}
-                            >
+                            <Button variant="secondary" onClick={() => handleDeleteUser(e, user)} >
                                 Delete Account
                             </Button>
                         </Col>
