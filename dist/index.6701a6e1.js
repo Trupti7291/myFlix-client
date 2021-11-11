@@ -27745,6 +27745,17 @@ function LoginView(props) {
                             },
                             __self: this,
                             children: " Log in "
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                            variant: "primary",
+                            type: "submit",
+                            href: "http://localhost:1234/register",
+                            __source: {
+                                fileName: "src/components/login-view/login-view.jsx",
+                                lineNumber: 37
+                            },
+                            __self: this,
+                            children: "Sign up"
                         })
                     ]
                 })
