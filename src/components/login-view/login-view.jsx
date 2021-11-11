@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Form, Button } from 'react-bootstrap';
+import { MutedLink, BoldLink } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
 import './login-view.scss';
 
@@ -34,7 +35,7 @@ export function LoginView(props) {
                         <Form.Control type="password" onChange={e => setPassword(e.target.value)} required placeholder="Enter Password" />
                     </Form.Group>
                     <Button variant="primary" type="submit" onClick={handleSubmit}> Log in </Button>
-                    <Button variant="primary" type="submit" href="http://localhost:1234/register">Sign up</Button>
+                    <Button className="signup-button" variant="primary" type="submit" href="http://localhost:1234/register">Sign up</Button>
                 </Form>
             </Col>
         </Row>
