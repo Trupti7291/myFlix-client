@@ -7,13 +7,13 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { setMovies, setFilter } from '../../actions/actions';
 import MoviesList from "../movies-list/movies-list";
 
-import LoginView from '../login-view/login-view';
+import { LoginView } from '../login-view/login-view';
 // import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { Genreview } from '../genre-view/genre-view';
 import { RegistrationView } from '../registration-view/registration-view';
-import ProfileView from '../profile-view/profile-view';
+import { ProfileView } from '../profile-view/profile-view';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
 
 import { Container, Row, Col } from 'react-bootstrap';
