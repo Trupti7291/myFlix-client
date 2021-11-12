@@ -15,18 +15,6 @@ form {
   margin-right: 100%;
 }
 
-.signup-button {
-  margin-left: 100%;
-}
-* {
-  margin-top: 5px;
-}
-
-img {
-  width: 300px;
-  height: 300px;
-}
-
 .color-nav {
   background-color: blue;
 }
@@ -50,6 +38,14 @@ img {
 
 .navbar .bg-light {
   background-color: black;
+}
+* {
+  margin-top: 5px;
+}
+
+img {
+  width: 300px;
+  height: 300px;
 }
 .my-flix {
   color: steelblue;
