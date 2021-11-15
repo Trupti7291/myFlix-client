@@ -4,6 +4,9 @@ import { Form, Button, Row, Col, Card, CardGroup, Container, ListGroup, ListGrou
 
 import { Link } from "react-router-dom";
 
+import { setUser, updateUser } from "../../actions/actions";
+import { connect } from "react-redux";
+
 export class ProfileView extends React.Component {
     constructor() {
         super();
@@ -281,3 +284,12 @@ export class ProfileView extends React.Component {
         );
     }
 }
+
+let mapStateToProps = state => {
+    return {
+        user: state.user,
+        movies: state.movies
+    }
+}
+
+export default connect(mapStateToProps, { setUser, updateUser })(ProfileView);
