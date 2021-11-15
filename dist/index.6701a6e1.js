@@ -43169,7 +43169,8 @@ function user(state = [], action) {
 }
 const moviesApp = _redux.combineReducers({
     visibilityFilter,
-    movies
+    movies,
+    user
 });
 exports.default = moviesApp;
 
