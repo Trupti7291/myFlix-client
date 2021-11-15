@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form, Button, MutedLink, BoldLink } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
+import { MutedLink, BoldLink } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
+
+import { connect } from "react-redux";
+
 import './login-view.scss';
 
 export function LoginView(props) {
@@ -34,7 +38,6 @@ export function LoginView(props) {
                         <Form.Control type="password" onChange={e => setPassword(e.target.value)} required placeholder="Enter Password" />
                     </Form.Group>
                     <Button variant="primary" type="submit" onClick={handleSubmit}> Log in </Button>
-                    {/* <MutedLink href="#"> Don't have account? <BoldLink href="http://localhost:1234/register"> Sign up </BoldLink></MutedLink> */}
                     <Button className="signup-button" variant="primary" type="submit" href="http://localhost:1234/register">Sign up</Button>
                 </Form>
             </Col>
@@ -42,3 +45,9 @@ export function LoginView(props) {
     </Container>
     );
 }
+
+const mapDispatchToProps = (dispatch) => ({
+    handleSubmit: (username, password) => dispatch(handleSubmit(username, password))
+});
+
+export default connect(null, mapDispatchToProps)(LoginView);
