@@ -19,7 +19,7 @@ import { NavigationBar } from '../navigation-bar/navigation-bar';
 import { Container, Row, Col } from 'react-bootstrap';
 import "./main-view.scss";
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
 
     constructor() {
         super();
