@@ -8,11 +8,6 @@ import { setMovies, setFilter } from '../../actions/actions';
 import MoviesList from "../movies-list/movies-list";
 
 import { LoginView } from '../login-view/login-view';
-<<<<<<< HEAD
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-=======
 // import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
@@ -23,7 +18,6 @@ import { NavigationBar } from '../navigation-bar/navigation-bar';
 
 import { Container, Row, Col } from 'react-bootstrap';
 import "./main-view.scss";
->>>>>>> myFlix-client
 
 class MainView extends React.Component {
 
@@ -93,31 +87,6 @@ class MainView extends React.Component {
 
         return (
             <Container>
-<<<<<<< HEAD
-                <div className="main-view">
-                    <Row className="justify-content-md-center">
-                        {/*If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned*/}
-                        {selectedMovie
-                            ? (
-
-                                <Col md={8}>
-                                    <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => {
-                                        this.setSelectedMovie(newSelectedMovie);
-                                    }} />
-                                </Col>
-
-                            )
-                            : movies.map(movie => (
-                                <Col md={3}>
-                                    <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => {
-                                        this.setSelectedMovie(newSelectedMovie);
-                                    }} />
-                                </Col>
-                            ))
-                        }
-                    </Row>
-                </div>
-=======
                 <Router>
                     <NavigationBar user={user} />
                     <div className="main-view">
@@ -168,7 +137,6 @@ class MainView extends React.Component {
                         </Row>
                     </div>
                 </Router>
->>>>>>> myFlix-client
             </Container >
         );
     }
