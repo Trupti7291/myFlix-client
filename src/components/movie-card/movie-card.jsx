@@ -1,10 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import propTypes, { func } from 'prop-types';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-
-=======
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -12,7 +6,6 @@ import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 
 import "./movie-card.scss";
->>>>>>> myFlix-client
 
 export class MovieCard extends React.Component {
     render() {
