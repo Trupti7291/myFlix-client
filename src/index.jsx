@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container'
 import { MainView } from './components/main-view/main-view';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import moviesApp from './reducers/reducers';
+import moviesApp from "./reducers/reducers"
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
 import MainView from './components/main-view/main-view';
