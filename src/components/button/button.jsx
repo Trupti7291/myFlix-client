@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import Button from "react-bootstrap/Button";
 import './button.scss';
 
@@ -7,6 +7,5 @@ export function button({ label }) {
         Submit
     </Button>
 }
-=======
+
 import './button.scss';
->>>>>>> myFlix-client
